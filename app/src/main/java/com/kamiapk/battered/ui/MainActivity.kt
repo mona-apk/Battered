@@ -20,18 +20,6 @@ class MainActivity : AppCompatActivity() {
         val binding : com.kamiapk.battered.databinding.ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
-
-        //countの値に応じてUIが変わる。
-        //これをViewModelのなかに突っ込めないか…?
-        viewModel.count.observe(this, Observer {
-            when (viewModel.count.value){
-                    in 0..5 -> imageView.setImageResource(R.drawable.a)
-                    in 6..11 -> imageView.setImageResource(R.drawable.b)
-                    in 12..17 -> imageView.setImageResource(R.drawable.c)
-                    else -> imageView.setImageResource(R.drawable.d)
-            }
-        })
-
     }
 
 }
