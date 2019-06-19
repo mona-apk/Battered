@@ -19,9 +19,18 @@ class MainViewModel : ViewModel() {
     //private val input …のようにprivateにしていたため永遠に双方向性databindingができなくて詰んでいた。
     val input : MutableLiveData<String> = MutableLiveData()
 
+    var resId = R.drawable.a
+
     //数字が一つずつ増えていく
     fun onClick_TAP(){
         _count.value = (_count.value ?: 0) + 1
+
+        resId = when (_count.value){
+            in 0..5 -> R.drawable.b
+            in 6..11 -> R.drawable.c
+            in 12..17 -> R.drawable.d
+            else -> R.drawable.a
+        }
     }
 
     //editTextの初期化
@@ -34,6 +43,8 @@ class MainViewModel : ViewModel() {
 
         //Changeボタンが押されたらeditTextを空にする。
         input.value = ""
+
+
     }
 
 }
